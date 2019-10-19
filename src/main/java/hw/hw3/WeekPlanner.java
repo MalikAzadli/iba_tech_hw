@@ -20,15 +20,16 @@ public class WeekPlanner {
         while(!isEnd){
             System.out.print("Please, input the day of the week: ");
             String day = validityCheck();
-            //if input contains the word "reschedule", it will open set schedule option
             if(day.contains("reschedule")){
                 setSchedule(day);
                 continue;
             }
-
             //look through the entry and decide what tasks to print if the day is valid
             for(int i = 0; i < weekDays.length; i++){
-                if (day.equalsIgnoreCase(weekDays[i])) printTasks(i);
+                if (day.equalsIgnoreCase(weekDays[i])) {
+                    printTasks(i);
+                    break;
+                }
             }
 
             //change the cycle flag to true to end the loop
@@ -46,15 +47,11 @@ public class WeekPlanner {
             //input is trimmed and convert to lower case to make further processes easier
             day = scan.nextLine().trim().toLowerCase();
             for(String weekDay : weekDays){
-                if(day.equalsIgnoreCase(weekDay)) {
-                    //valid day will be returned immediately
-                    return day;
-                }
+                if(day.equalsIgnoreCase(weekDay)) return day; //valid day will be returned immediately
                 if(day.equalsIgnoreCase("exit")) return day;
                 if(day.contains("reschedule")) return day;
             }
-            //if input does not match with all expected options,
-            //it will be asked to enter new input
+            //unacceptable input will be disregard, new input will be requested
             System.out.print("Sorry, I don't understand you, please try again."
                     +"\nPlease, input the day of the week: ");
         }
@@ -68,19 +65,15 @@ public class WeekPlanner {
     private static void setSchedule(String command){
         //whitespace between two words will be considered as starting point of name of the day
         int whiteSpace = command.indexOf(" ");
-        //extracting the name of the day
         String day = command.substring(whiteSpace+1);
-        //number of the day
-        int day_num = 0;
+
+        int dayNum = 0;
         for(int i = 0; i < weekDays.length; i++){
-            if(weekDays[i].equalsIgnoreCase(day)){
-                //figuring out the number
-                day_num = i;
-            }
+            if(weekDays[i].equalsIgnoreCase(day)) dayNum = i;
         }
-        System.out.printf("%s will be rescheduled:\nPlease, enter your tasks: ", day);
+        System.out.printf("%s will be rescheduled.\nPlease, enter your tasks: ", day);
         //setting tasks for the day
-        schedule[day_num][1] = scan.nextLine();
+        schedule[dayNum][1] = scan.nextLine();
     }
 
     /**
