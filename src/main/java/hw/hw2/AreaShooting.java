@@ -10,14 +10,13 @@ public class AreaShooting {
     public static void main(String[] args) {
         Random rand = new Random();
         String[][] battleField = createField(5,5);
-        //variables to keep record of target
-        int tarLine = rand.nextInt(5)+1;
-        int tarBar = rand.nextInt(5)+1;
-        //number of shoots that have been completed
-        int shoot_number = 0;
+
+        int targetLine = rand.nextInt(5)+1;
+        int targetBar = rand.nextInt(5)+1;
+        int shootNumber = 0;
 
         System.out.println("All set. Get ready to rumble!");
-
+        printField(battleField);
         //variables to keep record of current shoot location
         int chosenLine, chosenBar;
 
@@ -29,14 +28,14 @@ public class AreaShooting {
             chosenBar = validationCheck();
 
             shootLocation(chosenLine,chosenBar,battleField);
-            shoot_number++;
-        } while (tarLine != chosenLine || tarBar != chosenBar);
+            shootNumber++;
+        } while (targetLine != chosenLine || targetBar != chosenBar);
         System.out.println("You have won!");
         //after game finished, target location is marked with 'x'
-        battleField[tarLine][tarBar] = " x |";
+        battleField[targetLine][targetBar] = " x |";
 
         printField(battleField);
-        System.out.printf("You have defeated the enemy after %d shoots", shoot_number);
+        System.out.printf("You have defeated the enemy after %d shoots", shootNumber);
     }
 
     /**
