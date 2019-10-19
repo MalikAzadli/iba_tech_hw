@@ -1,4 +1,4 @@
-package hw2;
+package hw.hw2;
 
 import java.util.Random;
 import java.util.Scanner;

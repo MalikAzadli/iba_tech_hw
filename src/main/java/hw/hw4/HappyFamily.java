@@ -1,4 +1,4 @@
-package hw4;
+package hw.hw4;
 
 public class HappyFamily {
 }

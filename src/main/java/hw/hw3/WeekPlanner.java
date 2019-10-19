@@ -1,4 +1,4 @@
-package hw3;
+package hw.hw3;
 
 import java.util.Scanner;
 
@@ -41,7 +41,7 @@ public class WeekPlanner {
      * @return String will be returned if it input is valid
      */
     private static String validityCheck(){
-        String day = "";
+        String day;
         while (true){
             //input is trimmed and convert to lower case to make further processes easier
             day = scan.nextLine().trim().toLowerCase();

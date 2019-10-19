@@ -1,5 +1,5 @@
 
-package hw1;
+package hw.hw1;
 
 import java.util.ArrayList;
 import java.util.Collections;
