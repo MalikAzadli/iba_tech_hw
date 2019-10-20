@@ -1,6 +1,5 @@
 package hw.hw4;
 
-import javax.crypto.spec.PSource;
 import java.util.Arrays;
 
 public class Human {
@@ -48,8 +47,10 @@ public class Human {
     }
 
     public void describePet(){
-        String slyNess = pet.getAge() > 50 ? "very sly" : "almost not sly";
-        System.out.printf("I have a %s, he is %d years old, he is %s\n", pet.getSpecies(), pet.getAge(), slyNess);
+        String slyness = pet.getAge() > 50
+                                        ? "very sly"
+                                        : "almost not sly";
+        System.out.printf("I have a %s, he is %d years old, he is %s\n", pet.getSpecies(), pet.getAge(), slyness);
     }
 
     public String getName() {

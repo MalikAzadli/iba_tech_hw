@@ -39,6 +39,7 @@ public class WeekPlanner {
 
     /**
      * Input will be scanned and analyzed to check the validity of the command
+     * Unacceptable input will be disregard, new input will be requested
      * @return String will be returned if it input is valid
      */
     private static String validityCheck(){
@@ -51,7 +52,6 @@ public class WeekPlanner {
                 if(day.equalsIgnoreCase("exit")) return day;
                 if(day.contains("reschedule")) return day;
             }
-            //unacceptable input will be disregard, new input will be requested
             System.out.print("Sorry, I don't understand you, please try again."
                     +"\nPlease, input the day of the week: ");
         }
@@ -59,11 +59,12 @@ public class WeekPlanner {
     }
 
     /**
+     * Day that is requested to be rearranged will be extracted from input.
      * According to the name mentioned in the command, option for new tasks will be opened
-     * @param command
+     *
+     * @param command It is considered to be two strings separated by a whitespace
      */
     private static void setSchedule(String command){
-        //whitespace between two words will be considered as starting point of name of the day
         int whiteSpace = command.indexOf(" ");
         String day = command.substring(whiteSpace+1);
 
