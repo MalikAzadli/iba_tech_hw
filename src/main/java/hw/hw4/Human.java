@@ -60,36 +60,12 @@ public class Human {
         return surname;
     }
 
-    public int getYear() {
-        return year;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
 
     public void setSurname(String surname) {
         this.surname = surname;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
-    }
-
-    public void setPet(Pet pet) {
-        this.pet = pet;
-    }
-
-    public void setMother(Human mother) {
-        this.mother = mother;
-    }
-
-    public void setFather(Human father) {
-        this.father = father;
-    }
-
-    public void setSchedule(String[][] schedule) {
-        this.schedule = schedule;
     }
 
     @Override
