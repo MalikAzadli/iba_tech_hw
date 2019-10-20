@@ -73,6 +73,9 @@ public class Human {
     }
 
     public void setFamily(Family family){
+        //adding new family lead to leaving current family (being removed from its children object)
+        //and being added to the children set of new family
+        this.family.deleteChild(this);
         this.family = family;
         this.family.addChild(this);
     }
