@@ -4,18 +4,17 @@ import java.util.Scanner;
 
 public class WeekPlanner {
 
-    //class variables and objects
     private static Scanner scan = new Scanner(System.in);
     private static String[] weekDays = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
     private static String[][] schedule = new String[7][2];
 
     public static void main(String[] args) {
-        //setting default tasks for each weekday
+
         for(int i = 0; i < weekDays.length; i++){
             schedule[i][0] = weekDays[i];
             schedule[i][1] = "waking up and doing basic exercises";
         }
-        //track whether to end the loop or not
+
         boolean isEnd = false;
         while(!isEnd){
             System.out.print("Please, input the day of the week: ");
@@ -24,7 +23,7 @@ public class WeekPlanner {
                 setSchedule(day);
                 continue;
             }
-            //look through the entry and decide what tasks to print if the day is valid
+
             for(int i = 0; i < weekDays.length; i++){
                 if (day.equalsIgnoreCase(weekDays[i])) {
                     printTasks(i);
@@ -32,7 +31,6 @@ public class WeekPlanner {
                 }
             }
 
-            //change the cycle flag to true to end the loop
             if(day.equalsIgnoreCase("exit")) isEnd = true;
         }
     }
@@ -40,15 +38,19 @@ public class WeekPlanner {
     /**
      * Input will be scanned and analyzed to check the validity of the command
      * Unacceptable input will be disregard, new input will be requested
+     * Method will search for 3 kinds of words:
+     * 1) name of days, 2)"exit" keyword, 3)"reschedule" keyword
+     * Input that is not included in above mentioned sets will be disregard,
+     * and it will be asked to enter new input.
+     *
      * @return String will be returned if it input is valid
      */
     private static String validityCheck(){
         String day;
         while (true){
-            //input is trimmed and convert to lower case to make further processes easier
             day = scan.nextLine().trim().toLowerCase();
             for(String weekDay : weekDays){
-                if(day.equalsIgnoreCase(weekDay)) return day; //valid day will be returned immediately
+                if(day.equalsIgnoreCase(weekDay)) return day;
                 if(day.equalsIgnoreCase("exit")) return day;
                 if(day.contains("reschedule")) return day;
             }
