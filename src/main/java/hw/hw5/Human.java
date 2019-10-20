@@ -8,6 +8,7 @@ public class Human {
     private String name;
     private String surname;
     private int year;
+    private int iq;
     private Pet pet;
     private Family family;
     private String[][] schedule;
@@ -51,6 +52,10 @@ public class Human {
 
     public String getFullName() { return name+" "+surname; }
 
+    public int getIq() {
+        return iq;
+    }
+
     public void setYear(int year) {
         this.year = year;
     }
@@ -59,12 +64,17 @@ public class Human {
         this.pet = pet;
     }
 
+    public void setIq() {
+        this.iq = iq;
+    }
+
     public void setSchedule(String[][] schedule) {
         this.schedule = schedule;
     }
 
     public void setFamily(Family family){
         this.family = family;
+        this.family.addChild(this);
     }
 
     @Override

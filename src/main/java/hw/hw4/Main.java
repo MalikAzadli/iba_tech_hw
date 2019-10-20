@@ -14,7 +14,7 @@ public class Main {
         george.setName("George");
         george.setSurname("Bailey");
         Human sarah = new Human("Sarah", "Bailey", 1912);
-        Human zuzu = new Human("Zuzu", "Bailey", 1940, bolt, sarah, george, new String[7][2]);
+        Human zuzu = new Human("Zuzu", "Bailey", 1940, 85, bolt, sarah, george, new String[7][2]);
 
 
         //Allison family
@@ -23,7 +23,7 @@ public class Main {
         rebecca.setName("Rebecca");
         rebecca.setSurname("Allison");
         Human mark = new Human("Mark", "Allison", 2003, rebecca, james);
-        Human lea = new Human("Lea", "Allison", 2005, bolt, rebecca, james, new String[7][2]);
+        Human lea = new Human("Lea", "Allison", 2005, 95, bolt, rebecca, james, new String[7][2]);
 
         lea.describePet();
         lea.greetPet();

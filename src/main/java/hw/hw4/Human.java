@@ -8,6 +8,7 @@ public class Human {
     private String name;
     private String surname;
     private int year;
+    private int iq;
     private Pet pet;
     private Human mother;
     private Human father;
@@ -27,10 +28,11 @@ public class Human {
         this.father = father;
     }
 
-    public Human(String name, String surname, int year, Pet pet, Human mother, Human father, String[][] schedule) {
+    public Human(String name, String surname, int year, int iq, Pet pet, Human mother, Human father, String[][] schedule) {
         this.name = name;
         this.surname = surname;
         this.year = year;
+        this.iq = iq;
         this.pet = pet;
         this.mother = mother;
         this.father = father;
@@ -92,9 +94,9 @@ public class Human {
 
     @Override
     public String toString() {
-        String s = String.format("Human{name='%s', surname='%s', year=%d, iq=90, mother=%s,"+
+        String s = String.format("Human{name='%s', surname='%s', year=%d, iq=%d, mother=%s,"+
                 " father=%s, pet=dog{nickname='%s', age=%d, trickLevel=%d, habits=%s}}",
-                name, surname, year, (mother.getName()+" "+mother.getSurname()),
+                name, surname, year, iq, (mother.getName()+" "+mother.getSurname()),
                 (father.getName()+" "+father.getSurname()), pet.getNickname(),
                 pet.getAge(), pet.getTrickLevel(), Arrays.toString(pet.getHabits()));
 

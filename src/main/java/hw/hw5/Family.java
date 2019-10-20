@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Family {
 
-    private final Human mother;
-    private final Human father;
+    private Human mother;
+    private Human father;
     private Pet pet;
     private ArrayList<Human> children;
 
@@ -29,6 +29,16 @@ public class Family {
 
     public ArrayList<Human> getChildren() {
         return children;
+    }
+
+    public Family setMother(Human mother) {
+        this.mother = mother;
+        return new Family(this.mother, this.father);
+    }
+
+    public Family setFather(Human father) {
+        this.father = father;
+        return new Family(this.mother, this.father);
     }
 
     public void setPet(Pet pet) {
@@ -71,8 +81,12 @@ public class Family {
 
     @Override
     public String toString() {
+        String childrenInfo = "";
+        for(Human child: children){
+            String.format("%s\n%s", childrenInfo, child.toString());
+        }
         String s = String.format("Family{father=%s, mother=%s, children=%s",
-                father.getFullName(), mother.getFullName(), children);
+                father.getFullName(), mother.getFullName(), childrenInfo.trim());
         return s;
     }
 }
