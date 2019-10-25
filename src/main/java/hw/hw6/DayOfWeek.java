@@ -1,6 +1,6 @@
 package hw.hw6;
 
-public enum DayofWeek {
+public enum DayOfWeek {
     MONDAY,
     TUESDAY,
     WEDNESDAY,

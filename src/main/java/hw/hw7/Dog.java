@@ -1,6 +1,9 @@
 package hw.hw7;
 
-public class Dog extends Pet implements HasFouls{
+import java.util.Random;
+
+public class Dog extends Pet implements Foulable {
+    private Random rand = new Random();
 
     public Dog(Species species, String nickname, int age, int trickLevel, String[] habits) {
         super(nickname, age, trickLevel, habits);
@@ -17,11 +20,11 @@ public class Dog extends Pet implements HasFouls{
 
     @Override
     public void respond() {
-
+        System.out.println("I am, " + this.getNickname() + ". Who are you?");
     }
 
     @Override
     public void foul() {
-
+        System.out.println("Hi, i am RoboDog, " + rand.nextInt(245));
     }
 }

@@ -1,5 +1,5 @@
 package hw.hw7;
 
-public interface HasFouls {
+public interface Foulable {
     public void foul();
 }
