@@ -39,8 +39,8 @@ public class FamilyController {
         return familyService.deleteFamilyByIndex(index);
     }
 
-    public void bornChild(Family family, String masculine, String feminine) {
-        familyService.bornChild(family, masculine, feminine);
+    public void bornChild(Family family, Gender gender) {
+        familyService.bornChild(family, gender);
     }
 
     public Family adoptChild(Family family, Human human) {

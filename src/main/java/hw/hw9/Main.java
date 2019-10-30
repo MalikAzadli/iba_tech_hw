@@ -54,16 +54,24 @@ public class Main {
         System.out.println("All families less than 4:");
         controller.getAllFamiliesLessThan(4);
 
+        //delete all children older than
+        controller.deleteAllChildrenOlderThan(15);
+        System.out.println("After deleting older children");
+        controller.displayAllFamilies();
+
+        //born child
+        System.out.println("One new member was born");
+        controller.bornChild(controller.getFamilyById(1), Gender.MASCULINE);
+        controller.displayAllFamilies();
+
+        //family with specific number of members
+        int count = controller.countFamiliesWithMemberNumber(3);
+        System.out.printf("There are %d families with 3 members\n", count);
+
         //get family by id AND delete family by id
         Family family = controller.getFamilyById(1);
         System.out.println("Family at index 1 will be deleted: " + family.toString());
         controller.deleteFamilyByIndex(1);
-        controller.displayAllFamilies();
-
-        //delete all children older than
-        controller.deleteAllChildrenOlderThan(15);
-        System.out.println("After deleting older children");
-
         controller.displayAllFamilies();
 
 

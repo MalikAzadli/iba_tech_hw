@@ -1,10 +1,7 @@
 package hw.hw9;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Stream;
 
 public class FamilyService {
@@ -43,8 +40,8 @@ public class FamilyService {
     public int countFamiliesWithMemberNumber(int memberCount) {
         int counter = 0;
         List<Family> families = familyDao.getAllFamilies();
-        for(Family family: families){
-            if(family.countFamily() == memberCount) counter++;
+        for (Family family : families) {
+            if (family.countFamily() == memberCount) counter++;
         }
         return counter;
     }
@@ -58,9 +55,20 @@ public class FamilyService {
     }
 
     ///////////////////////////////////////////////////
-    public Family bornChild(Family family, String masculine, String feminine) {
-
-
+    public Family bornChild(Family family, Gender gender) {
+        if(!familyDao.getAllFamilies().contains(family)) familyDao.saveFamily(family);
+        Random rand = new Random();
+        List<String> femaleNames = Arrays.asList("Jane", "Margaret", "Lily", "Bella");
+        List<String> maleNames = Arrays.asList("Mike", "Al", "Daniel", "Andrey");
+        String surname = family.getFather().getSurname();
+        int year = LocalDate.now().getYear();
+        Human child;
+        if (gender.equals("MASCULINE")) {
+            child = new Man(maleNames.get(rand.nextInt(maleNames.size())), surname, year, family);
+        } else {
+            child = new Man(femaleNames.get(rand.nextInt(femaleNames.size())), surname, year, family);
+        }
+        family.addChild(child);
         return family;
     }
 
@@ -88,9 +96,9 @@ public class FamilyService {
         getAllFamilies().forEach(family -> {
             Iterator<Human> humanIterator = family.getChildren().iterator();
             ArrayList<Human> youngerChildren = new ArrayList<>();
-            while(humanIterator.hasNext()){
+            while (humanIterator.hasNext()) {
                 Human human = humanIterator.next();
-                if(year - human.getYear() < age) youngerChildren.add(human);
+                if (year - human.getYear() < age) youngerChildren.add(human);
             }
             family.setChildren(youngerChildren);
         });
