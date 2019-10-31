@@ -55,18 +55,16 @@ public class FamilyService {
     }
 
     ///////////////////////////////////////////////////
-    public Family bornChild(Family family, Gender gender) {
-        if(!familyDao.getAllFamilies().contains(family)) familyDao.saveFamily(family);
+    public Family bornChild(Family family, String boyName, String girlName) {
         Random rand = new Random();
-        List<String> femaleNames = Arrays.asList("Jane", "Margaret", "Lily", "Bella");
-        List<String> maleNames = Arrays.asList("Mike", "Al", "Daniel", "Andrey");
+        if (!familyDao.getAllFamilies().contains(family)) familyDao.saveFamily(family);
         String surname = family.getFather().getSurname();
         int year = LocalDate.now().getYear();
         Human child;
-        if (gender.equals("MASCULINE")) {
-            child = new Man(maleNames.get(rand.nextInt(maleNames.size())), surname, year, family);
+        if (rand.nextBoolean()) {
+            child = new Man(boyName, surname, year, family);
         } else {
-            child = new Man(femaleNames.get(rand.nextInt(femaleNames.size())), surname, year, family);
+            child = new Man(girlName, surname, year, family);
         }
         family.addChild(child);
         return family;

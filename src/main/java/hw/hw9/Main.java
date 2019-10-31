@@ -61,7 +61,7 @@ public class Main {
 
         //born child
         System.out.println("One new member was born");
-        controller.bornChild(controller.getFamilyById(1), Gender.MASCULINE);
+        controller.bornChild(controller.getFamilyById(1), "James", "Lea");
         controller.displayAllFamilies();
 
         //family with specific number of members
