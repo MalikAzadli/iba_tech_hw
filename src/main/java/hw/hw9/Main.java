@@ -11,17 +11,18 @@ public class Main {
         //manually created families
         Human jamesMaud = new Man("James", "Maud", 1960, null);
         Human nataliaMaud = new Woman("Natalia", "Maud", 1970, null);
-        Family maud = new Family(jamesMaud, nataliaMaud);
-        Human markMaud = new Man("Mark", "Maud", 2007, maud);
-        Human janeMaud = new Woman("Jane", "Maud", 1993, maud);
 
         Human markKane = new Man("Mark", "Kane", 1965, null);
         Human juliaKane = new Woman("Julia", "Kane", 1972, null);
-        Family kane = new Family(markKane, juliaKane);
 
-        familyDao.saveFamily(maud);
-        familyDao.saveFamily(kane);
+        controller.createNewFamily(jamesMaud, nataliaMaud);
+        controller.createNewFamily(markKane, juliaKane);
 
+        Family maud = controller.getFamilyById(0);
+        Family kane = controller.getFamilyById(1);
+
+        Human markMaud = new Man("Mark", "Maud", 2007, maud);
+        Human janeMaud = new Woman("Jane", "Maud", 1993, maud);
         //Create new Family
         Human jakeMiles = new Man("Jake", "Miles", 1945, null);
         Human barbaraMiles = new Man("Barbara", "Miles", 1951, null);

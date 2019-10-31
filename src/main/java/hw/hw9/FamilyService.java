@@ -54,18 +54,15 @@ public class FamilyService {
         return familyDao.deleteFamily(familyDao.getFamilyByIndex(index));
     }
 
-    ///////////////////////////////////////////////////
     public Family bornChild(Family family, String boyName, String girlName) {
         Random rand = new Random();
         if (!familyDao.getAllFamilies().contains(family)) familyDao.saveFamily(family);
         String surname = family.getFather().getSurname();
         int year = LocalDate.now().getYear();
         Human child;
-        if (rand.nextBoolean()) {
-            child = new Man(boyName, surname, year, family);
-        } else {
-            child = new Man(girlName, surname, year, family);
-        }
+        if (rand.nextBoolean()) child = new Man(boyName, surname, year, family);
+        else child = new Woman(girlName, surname, year, family);
+
         family.addChild(child);
         return family;
     }
