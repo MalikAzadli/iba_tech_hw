@@ -1,6 +1,9 @@
 package hw.hw10;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,18 +19,26 @@ public class Human {
     private Family family;
     private Map<String, ArrayList<String>> schedule = new HashMap<>();
 
-    public Human(String name, String surname, int year, Family family) {
+    public Human(String name, String surname, long birthDate, Family family) {
         this.name = name;
         this.surname = surname;
-        this.birthDate = year;
+        this.birthDate = birthDate;
         this.family = family;
         if((family != null)) family.addChild(this);
     }
 
-    public Human(String name, String surname, int year, Pet pet, Family family, Map<String, ArrayList<String>> schedule) {
+    public Human(String name, String surname, long year, Pet pet, Family family, Map<String, ArrayList<String>> schedule) {
         this(name, surname, year, family);
         this.pet = pet;
         this.schedule = schedule;
+    }
+
+    public Human(String name, String surname, String birthDate, int iq){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        this.birthDate = LocalDate.parse(birthDate, formatter).toEpochDay();
+        this.iq = iq;
+        this.name = name;
+        this.surname = surname;
     }
 
     public void greetPet() {
@@ -89,12 +100,13 @@ public class Human {
     }
 
     public String describeAge(){
-        LocalDate date = LocalDate.;
+        LocalDate date = LocalDate.ofEpochDay(birthDate);
         LocalDate localDate = LocalDate.now();
+        Period period = Period.between(date, localDate);
         return String.format("%d years, %d months, %d days old",
-                localDate.getYear()-date.getYear(),
-                localDate.getMonth().getValue() - date.getMonth().getValue(),
-                localDate.getDayOfYear() - date.getDayOfYear());
+                period.getYears(),
+                period.getMonths(),
+                period.getDays());
     }
 
     @Override
@@ -114,8 +126,11 @@ public class Human {
 
     @Override
     public String toString() {
-        String s = String.format("Human{name='%s', surname='%s', year=%d, iq=1, " +
-                "schedule=%s}", name, surname, birthDate, schedule.toString());
+        String s = String.format("Human{name='%s', surname='%s', year=%s, iq=1, schedule=%s}",
+                name,
+                surname,
+                LocalDate.ofEpochDay(birthDate).toString(),
+                schedule.toString());
 
         return s;
     }
