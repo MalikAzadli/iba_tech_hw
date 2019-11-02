@@ -1,7 +1,9 @@
 package hw.hw10;
 
+import hw.hw10.human.Human;
+import hw.hw10.human.Man;
+
 import java.time.LocalDate;
-import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {

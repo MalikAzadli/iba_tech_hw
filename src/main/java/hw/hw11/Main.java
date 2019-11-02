@@ -1,5 +1,17 @@
 package hw.hw11;
 
+import hw.hw11.controller.FamilyController;
+import hw.hw11.dao.CollectionFamilyDao;
+import hw.hw11.dao.FamilyDao;
+import hw.hw11.dao.FamilyService;
+import hw.hw11.human.Family;
+import hw.hw11.human.Human;
+import hw.hw11.human.Man;
+import hw.hw11.human.Woman;
+import hw.hw11.pet.Dog;
+import hw.hw11.pet.Pet;
+import hw.hw11.pet.Species;
+
 import java.time.LocalDate;
 import java.util.Set;
 

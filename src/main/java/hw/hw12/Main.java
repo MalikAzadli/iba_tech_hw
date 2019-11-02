@@ -1,11 +1,17 @@
 package hw.hw12;
 
+import hw.hw12.console.Console;
+import hw.hw12.controller.FamilyController;
+import hw.hw12.dao.*;
+import hw.hw12.human.*;
+import hw.hw12.pet.*;
+
 import java.time.LocalDate;
 import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
-
+        /*
         FamilyDao familyDao = new CollectionFamilyDao();
         FamilyService service = new FamilyService(familyDao);
         FamilyController controller = new FamilyController(service);
@@ -75,7 +81,23 @@ public class Main {
         Family family = controller.getFamilyById(1);
         System.out.println("Family at index 1 will be deleted: " + family.toString());
         controller.deleteFamilyByIndex(1);
-        controller.displayAllFamilies();
+        controller.displayAllFamilies();*/
+
+        /*Human father = new Man("James", "Dean", LocalDate.of(1990, 12, 23).toEpochDay(), null);
+        Human mother = new Man("Lea", "Dean", LocalDate.of(1992, 11, 10).toEpochDay(), null);
+
+        Family dean = new Family(father, mother);
+        dean.addChild(new Man("Mark", "Dean", LocalDate.of(2007, 10, 1).toEpochDay(), dean));
+        dean.addChild(new Woman("Jane", "Dean", LocalDate.of(2008, 10, 1).toEpochDay(), dean));
+        dean.addPet(new Dog(Species.DOG, "mike"));
+        dean.addPet(new RoboCat(Species.ROBOCAT, "robotechie"));
+        System.out.println(dean.prettyFormat());*/
+
+        FamilyDao familyDao = new CollectionFamilyDao();
+        FamilyService service = new FamilyService(familyDao);
+        FamilyController controller = new FamilyController(service);
+        Console console = new Console(controller);
+
 
     }
 }

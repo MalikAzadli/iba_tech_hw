@@ -1,5 +1,12 @@
 package hw.hw9;
 
+import hw.hw9.dao.CollectionFamilyDao;
+import hw.hw9.dao.FamilyService;
+import hw.hw9.human.Family;
+import hw.hw9.human.Human;
+import hw.hw9.human.Man;
+import hw.hw9.human.Woman;
+import hw.hw9.pet.*;
 import org.junit.Before;
 import org.junit.Test;
 
