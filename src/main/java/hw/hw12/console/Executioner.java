@@ -117,7 +117,7 @@ public class Executioner {
 
     private void familiesBiggerThan() {
         int number = convertToNumber(data.get(0));
-        controller.getAllFamiliesLessThan(number);
+        controller.getAllFamiliesBiggerThan(number);
     }
 
     private void countFamiliesWithMemberNumber() {

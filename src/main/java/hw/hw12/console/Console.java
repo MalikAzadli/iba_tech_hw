@@ -1,8 +1,6 @@
 package hw.hw12.console;
 
 import hw.hw12.controller.FamilyController;
-
-import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
