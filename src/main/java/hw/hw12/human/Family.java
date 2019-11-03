@@ -1,8 +1,7 @@
 package hw.hw12.human;
 
-import hw.hw12.exception.FamilyOverflowException;
-import hw.hw12.pet.Pet;
 
+import hw.hw12.pet.Pet;
 import java.util.*;
 
 public class Family {
@@ -57,10 +56,7 @@ public class Family {
         this.children = children;
     }
 
-    public void addChild(Human child) throws FamilyOverflowException {
-        if (this.countFamily() >= 5) {
-            throw new FamilyOverflowException("More than 5 members will not be allowed");
-        }
+    public void addChild(Human child) {
         if (children.contains(child)) return;
         this.children.add(child);
         child.setFamily(this);

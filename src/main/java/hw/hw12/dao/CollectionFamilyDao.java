@@ -49,8 +49,7 @@ public class CollectionFamilyDao implements FamilyDao {
         try{
             families.get(index);
         } catch (IndexOutOfBoundsException e){
-            System.out.println("Invalid family index");
-            return false;
+            throw new IndexOutOfBoundsException("Invalid family index.");
         }
         return true;
     }

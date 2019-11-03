@@ -34,14 +34,14 @@ public class Executioner {
         this.commandNumber = number;
         List<String> requests = new ArrayList<>();
         for (int i = 0; i < lines.size(); i++) {
-            if (lines.get(i).startsWith(number+".")) requests.add(lines.get(i));
+            if (lines.get(i).startsWith(number + ".")) requests.add(lines.get(i));
         }
         return requests;
     }
 
     public List<String> getCommandRequests(String string) {
         this.commandNumber = Integer.parseInt(string.substring(0, string.indexOf(".")));
-        this.subTopic = Integer.parseInt(string.substring(string.indexOf(".")+1));
+        this.subTopic = Integer.parseInt(string.substring(string.indexOf(".") + 1));
         List<String> requests = new ArrayList<>();
         for (int i = 0; i < lines.size(); i++) {
             if (lines.get(i).startsWith(string)) requests.add(lines.get(i));
@@ -135,8 +135,8 @@ public class Executioner {
 
     private void deleteFamily() {
         int index = convertToNumber(data.get(0));
-        if(!isValidFamily(index)) return;
-        controller.deleteFamilyByIndex(index-1);
+        if (!isValidFamily(index)) return;
+        controller.deleteFamilyByIndex(index - 1);
     }
 
     private void deleteOlderChildren() {
@@ -144,19 +144,19 @@ public class Executioner {
         controller.deleteAllChildrenOlderThan(age);
     }
 
-    private void editFamily(){
+    private void editFamily() {
         try {
             if (subTopic == 1) bornChild();
             else if (subTopic == 2) adoptBaby();
             else System.out.println("You were returned to the main control.");
-        } catch (FamilyOverflowException e){
+        } catch (FamilyOverflowException e) {
             System.out.println(e.getMessage());
         }
     }
 
     private void bornChild() throws FamilyOverflowException {
         int familyIndex = convertToNumber(data.get(0)) - 1;
-        if(!isValidFamily(familyIndex)) {
+        if (!isValidFamily(familyIndex)) {
             return;
         } else {
             Family family = controller.getFamilyById(familyIndex);
@@ -164,13 +164,13 @@ public class Executioner {
         }
     }
 
-    private void adoptBaby() throws FamilyOverflowException{
+    private void adoptBaby() throws FamilyOverflowException {
         int familyIndex = convertToNumber(data.get(0)) - 1;
-        if(!isValidFamily(familyIndex)) return;
+        if (!isValidFamily(familyIndex)) return;
         Family family = controller.getFamilyById(familyIndex);
         String date = data.get(4);
         Human kid = new Woman(data.get(2), data.get(3), date, convertToNumber(data.get(5)));
-        if(data.get(1).equalsIgnoreCase("male")){
+        if (data.get(1).equalsIgnoreCase("male")) {
             kid = new Man(data.get(2), data.get(3), date, convertToNumber(data.get(5)));
         } else {
 
@@ -184,14 +184,20 @@ public class Executioner {
             number = Integer.parseInt(string);
         } catch (IllegalArgumentException e) {
             System.out.println("You have entered invalid input!!");
+        } catch (IndexOutOfBoundsException e){
+            System.out.println(e.getMessage());
         }
         return number;
     }
 
-    private boolean isValidFamily(int index){
+    private boolean isValidFamily(int index) {
         try {
             controller.getFamilyById(index);
-        } catch (IndexOutOfBoundsException e){
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println(e.getMessage());
+            return false;
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
             return false;
         }
         return true;

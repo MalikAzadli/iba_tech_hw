@@ -1,6 +1,7 @@
 package hw.hw12.controller;
 
 import hw.hw12.dao.FamilyService;
+import hw.hw12.exception.FamilyOverflowException;
 import hw.hw12.human.Family;
 import hw.hw12.human.Human;
 import hw.hw12.pet.Pet;
@@ -44,11 +45,17 @@ public class FamilyController {
         return familyService.deleteFamilyByIndex(index);
     }
 
-    public void bornChild(Family family, String boyName, String girlName) {
+    public void bornChild(Family family, String boyName, String girlName) throws FamilyOverflowException {
+        if (family.countFamily() >= 5) {
+            throw new FamilyOverflowException("More than 5 members will not be allowed");
+        }
         familyService.bornChild(family, boyName, girlName);
     }
 
     public Family adoptChild(Family family, Human human) {
+        if (family.countFamily() >= 5) {
+            throw new FamilyOverflowException("More than 5 members is not be allowed");
+        }
         return familyService.adoptChild(family, human);
     }
 
