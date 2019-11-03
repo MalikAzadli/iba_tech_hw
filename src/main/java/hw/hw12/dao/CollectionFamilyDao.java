@@ -4,6 +4,7 @@ import hw.hw12.human.Family;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class CollectionFamilyDao implements FamilyDao {
 
@@ -19,13 +20,19 @@ public class CollectionFamilyDao implements FamilyDao {
     }
 
     @Override
-    public Family getFamilyByIndex(int index) {
+    public Family getFamilyByIndex(int index) throws IndexOutOfBoundsException{
+        if(!isValidFamily(index)){
+            return null;
+        }
         return families.get(index);
     }
 
     @Override
     public boolean deleteFamily(int index) {
-        return families.remove(index) != null;
+        if(isValidFamily(index)){
+         return families.remove(index) != null;
+        }
+        return false;
     }
 
     @Override
@@ -36,5 +43,15 @@ public class CollectionFamilyDao implements FamilyDao {
     @Override
     public void saveFamily(Family family) {
         if(!families.contains(family)) families.add(family);
+    }
+
+    private boolean isValidFamily(int index) throws IndexOutOfBoundsException{
+        try{
+            families.get(index);
+        } catch (IndexOutOfBoundsException e){
+            System.out.println("Invalid family index");
+            return false;
+        }
+        return true;
     }
 }

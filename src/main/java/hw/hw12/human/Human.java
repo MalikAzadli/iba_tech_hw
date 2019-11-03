@@ -127,10 +127,11 @@ public class Human {
 
     @Override
     public String toString() {
-        String s = String.format("Human{name='%s', surname='%s', birthDate=%s, iq=1, schedule=%s}",
+        String s = String.format("Human{name='%s', surname='%s', birthDate=%s, iq=%d, schedule=%s}",
                 name,
                 surname,
                 LocalDate.ofEpochDay(birthDate).format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),
+                iq,
                 schedule.toString());
 
         return s;

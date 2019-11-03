@@ -1,5 +1,6 @@
 package hw.hw12.human;
 
+import hw.hw12.exception.FamilyOverflowException;
 import hw.hw12.pet.Pet;
 
 import java.util.*;
@@ -56,8 +57,11 @@ public class Family {
         this.children = children;
     }
 
-    public void addChild(Human child) {
-        if(children.contains(child)) return;
+    public void addChild(Human child) throws FamilyOverflowException {
+        if (this.countFamily() >= 5) {
+            throw new FamilyOverflowException("More than 5 members will not be allowed");
+        }
+        if (children.contains(child)) return;
         this.children.add(child);
         child.setFamily(this);
     }
@@ -67,7 +71,7 @@ public class Family {
             return false;
         }
         int index = children.indexOf(child);
-        Human human = children.remove(index);
+        children.remove(index);
         return true;
     }
 
@@ -100,22 +104,22 @@ public class Family {
     public String toString() {
         String childrenInfo = "";
         for (Human child : children) {
-            childrenInfo+=String.format("%s\n", child.toString());
+            childrenInfo += String.format("%s\n", child.toString());
         }
         String s = String.format("Family{father=%s, mother=%s, children=%s}",
                 father.getFullName(), mother.getFullName(), childrenInfo.trim());
         return s;
     }
 
-    public String prettyFormat(){
+    public String prettyFormat() {
         String childrenInfo = "";
-        for(Human kid: children){
-            if(kid instanceof Man) childrenInfo+=String.format("\t\t\t\tboy: %s\n", kid.toString());
-            else childrenInfo+=String.format("\t\t\t\tgirl: %s\n", kid.toString());
+        for (Human kid : children) {
+            if (kid instanceof Man) childrenInfo += String.format("\t\t\t\tboy: %s\n", kid.toString());
+            else childrenInfo += String.format("\t\t\t\tgirl: %s\n", kid.toString());
         }
         String result = String.format("family:\n\t\tmother: %s\n\t\tfather: %s\n\t\tchildren:\n%s\t\tpets: %s\n\t\t"
-                ,father.toString()
-                ,mother.toString()
+                , father.toString()
+                , mother.toString()
                 , childrenInfo
                 , pet.toString());
         return result;

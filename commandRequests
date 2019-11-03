@@ -1,0 +1,28 @@
+1
+2
+3.1 >> number:
+4.1 >> number:
+5.1 >> number:
+6.1 >> mother's name:
+6.2 >> mother's last name:
+6.3 >> mother's birth year:
+6.4 >> mother's month of birth:
+6.5 >> mother's birthday:
+6.6 >> mother's iq:
+6.7 >> father's name:
+6.8 >> father's last name:
+6.9 >> father's birth year:
+6.10 >> father's month of birth:
+6.11 >> father's birthday:
+6.12 >> father's iq:
+7.1 >> family index:
+8.1.1 >>> family index:
+8.1.2 >>> boy name:
+8.1.3 >>> girl name:
+8.2.1 >>> family index:
+8.2.2 >>> gender (male/female):
+8.2.3 >>> name:
+8.2.4 >>> surname:
+8.2.5 >>> birth date (dd/MM/yyyy):
+8.2.6 >>> iq:
+9.1 >> age:

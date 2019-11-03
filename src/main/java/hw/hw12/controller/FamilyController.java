@@ -56,7 +56,7 @@ public class FamilyController {
         return familyService.count();
     }
 
-    public Family getFamilyById(int index) {
+    public Family getFamilyById(int index) throws IndexOutOfBoundsException {
         return familyService.getFamilyById(index);
     }
 

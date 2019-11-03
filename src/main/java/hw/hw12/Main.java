@@ -6,11 +6,12 @@ import hw.hw12.dao.*;
 import hw.hw12.human.*;
 import hw.hw12.pet.*;
 
+import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.util.Set;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         /*
         FamilyDao familyDao = new CollectionFamilyDao();
         FamilyService service = new FamilyService(familyDao);
@@ -98,6 +99,7 @@ public class Main {
         FamilyController controller = new FamilyController(service);
         Console console = new Console(controller);
 
+        console.run();
 
     }
 }
