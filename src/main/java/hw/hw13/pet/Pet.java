@@ -1,10 +1,11 @@
 package hw.hw13.pet;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-public abstract class Pet {
+public abstract class Pet implements Serializable {
     //class variables
     private Species species;
     private String nickname;

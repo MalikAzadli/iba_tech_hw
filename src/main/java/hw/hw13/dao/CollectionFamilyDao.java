@@ -1,8 +1,6 @@
 package hw.hw13.dao;
 
 import hw.hw13.human.Family;
-import hw.hw13.human.Human;
-import hw.hw13.human.Man;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -49,7 +47,7 @@ public class CollectionFamilyDao implements FamilyDao {
 
     @Override
     public void saveData() throws IOException {
-        FileOutputStream outputStream = new FileOutputStream("savedData.ser");
+        FileOutputStream outputStream = new FileOutputStream("save.ser");
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
         objectOutputStream.writeObject(families);
         objectOutputStream.close();
@@ -58,9 +56,11 @@ public class CollectionFamilyDao implements FamilyDao {
 
     @Override
     public void loadData() throws IOException, ClassNotFoundException {
-        FileInputStream inputStream = new FileInputStream("savedData.ser");
+        File file = new File("save.ser");
+        if(file.length() == 0) return;
+        FileInputStream inputStream = new FileInputStream("save.ser");
         ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
-        Human man = (Man) objectInputStream.readObject();
+        families = (List<Family>) objectInputStream.readObject();
         objectInputStream.close();
         inputStream.close();
     }

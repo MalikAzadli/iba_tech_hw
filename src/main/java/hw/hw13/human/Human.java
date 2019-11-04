@@ -2,6 +2,7 @@ package hw.hw13.human;
 
 import hw.hw13.pet.Pet;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
@@ -10,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class Human {
+public class Human implements Serializable {
     //class variables
     private String name;
     private String surname;

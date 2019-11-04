@@ -50,6 +50,14 @@ public class Executioner {
         return requests;
     }
 
+    public void loadData() throws IOException, ClassNotFoundException {
+        controller.loadData();
+    }
+
+    public void saveData() throws IOException {
+        controller.saveData();
+    }
+
     public void executeCommand(List<String> requests) {
         this.data = requests;
         switch (commandNumber) {
@@ -202,14 +210,6 @@ public class Executioner {
             return false;
         }
         return true;
-    }
-
-    public void loadData() throws IOException, ClassNotFoundException {
-        controller.loadData();
-    }
-
-    public void saveData() throws IOException {
-        controller.saveData();
     }
 
 }
