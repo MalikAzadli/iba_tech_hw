@@ -32,6 +32,7 @@
     - 3. Return to main menu
 -- 9. Remove all children over the age of majority (all families remove children over the age of majority - let us assume they have grown up)
     - request interested age
+-- 10. Save all families to the file for using it in future
 
 Enter following commands according to your need.
 Menu : to view list of commands

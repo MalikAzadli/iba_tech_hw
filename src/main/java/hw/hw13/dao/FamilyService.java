@@ -51,7 +51,7 @@ public class FamilyService {
         families = families.stream()
                 .filter(family -> family.countFamily() == memberCount)
                 .collect(Collectors.toList());
-
+        System.out.printf("%d family with %d members.\n", families.size(), memberCount);
         return families.size();
     }
 
@@ -126,5 +126,6 @@ public class FamilyService {
 
     public void saveData() throws IOException {
         familyDao.saveData();
+        System.out.println("All datas were saved!");
     }
 }

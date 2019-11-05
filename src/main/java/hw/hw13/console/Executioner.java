@@ -58,7 +58,7 @@ public class Executioner {
         controller.saveData();
     }
 
-    public void executeCommand(List<String> requests) {
+    public void executeCommand(List<String> requests) throws IOException {
         this.data = requests;
         switch (commandNumber) {
             case 1:
@@ -87,6 +87,9 @@ public class Executioner {
                 break;
             case 9:
                 deleteOlderChildren();
+                break;
+            case 10:
+                saveData();
                 break;
 
         }

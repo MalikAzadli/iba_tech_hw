@@ -48,7 +48,7 @@ public class Console {
 
     private List<String> getRequestList(String lineNumber) {
         int number = convertToNumber(lineNumber);
-        checkRange(number, 9);
+        checkRange(number, 10);
         List<String> requests;
         if (number == 8) {
             System.out.print("Choose one of the following options:" +
