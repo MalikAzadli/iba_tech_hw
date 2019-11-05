@@ -49,7 +49,7 @@ public class FamilyService {
         families = families.stream()
                 .filter(family -> family.countFamily() == memberCount)
                 .collect(Collectors.toList());
-
+        System.out.printf("%d family with %d members.\n", families.size(), memberCount);
         return families.size();
     }
 
